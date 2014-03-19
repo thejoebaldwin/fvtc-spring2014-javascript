@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+        
+        <style type="text/css">
+        	#secret
+        	{
+        		border:1px solid blue;
+        		height:200px;
+        		display:none;
+        	}
+        	#error
+        	{
+        		/*color:red;*/
+        	}
+        	.message
+        	{
+        		color:blue;
+        	}
+        	.error
+        	{
+        		color:red;
+        	}
+        </style>
+        
+        <script type="text/javascript">
+        
+        function enterKeyPress(event)
+        {
+        	var keyID = event.keyCode;
+        	if (keyID == 13) 
+        	   {
+        	   	document.getElementById('loginButton').click();
+        	   }
+        }
+        
+        function loginClick()
+        {
+        	//get elements and place them in corresponding variables		
+        	var secret = document.getElementById('secret');
+        	var password = document.getElementById('password');
+        	var loginButton = document.getElementById('loginButton');
+        	var error = document.getElementById('error');
+        	//does login button say 'login' or 'logout'?
+        	if (loginButton.value == 'login')
+        	{
+        		//is the password correct?
+        		if (password.value == 'secretpassword')
+        		{
+        			//hide the secret div
+        			secret.style.display = 'block';
+        			//change the login button to say 'logout'
+        			loginButton.value = 'logout';
+        			//clear the password textbox
+        			password.value = '';
+        			//display a welcome message in the message div
+        			error.innerHTML = '<span class="message">Welcome Back!</span>';
+        		}
+        		else
+        		{
+        			//display an error message in the message div
+        			error.innerHTML = '<span class="error">incorrect password</span>'; 
+        		}	
+        	}
+        	else
+        	{
+        		//hide the secret div
+        		secret.style.display = 'none';
+        		//change 'logout' to say 'login' on the login button
+        		loginButton.value = 'login';
+        		//display a goodbye message
+        		error.innerHTML = '<span class="message">Goodbye!</span>';
+
+        	}
+        	
+        }
+        	
+        </script>
+        
+    </head>
+    <body>
+    	    Password:<input id="password" type="text" name="password" value="secretpassword" onkeypress="return enterKeyPress(event)" />
+    		<input id="loginButton" type="button" value="login" onclick="loginClick()" />
+    		<div id="error"></div>
+	    	<div id="secret">
+    			<h2>This is a secret</h2>
+	    	</div>
+    </body>
+</html>
