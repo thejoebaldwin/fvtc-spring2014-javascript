@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Fruit Stand</title>
+    </head>
+    <style type="text/css">
+    	
+    	
+    </style>
+    
+    <script type="text/javascript">
+    	
+    	var fruitNames = new Array("apples", "oranges", "lemons");
+    	var fruitQuantities = new Array(3, 7, 1);
+    	
+    	
+    	
+    	//initializes the fruit table display
+    	function initialize()
+    	{
+    		
+    		
+    		var html = "<table border='1' id='fruitTable'>";
+    		html += "<tr><th>ID</th><th>Name</th><th>Qty</th></tr>"
+    		for (var i =0; i < fruitNames.length;i++)
+    		{
+    			html += "<tr>";
+    			html += "<td>" + i + "</td>";
+    			html += "<td>" + fruitNames[i] + "</td>";
+    			html += "<td>" + fruitQuantities[i] + "</td>";
+    			html += "</tr>";
+    		}
+    		html += "</table>";
+    		var fruits = document.getElementById("fruits");
+    		fruits.innerHTML = html;
+    	}
+    	
+    	//fires on submit button click
+    	function submitButtonClick()
+    	{
+    	  var fruitID = document.getElementById('fruitID').value;
+    	  var fruitQuantity = document.getElementById('fruitQuantity').value;	
+    	  //TODO: validation - not empty, numeric values	
+    	  
+    	  //fruitQuantities[fruitID] -= fruitQuantity;\
+    	  var errorMessage = document.getElementById('errorMessage');
+    	  
+    	  errorMessage.innerHTML = purchaseFruit(fruitID,fruitQuantity);	
+    	  initialize();	
+    		
+    	}
+    	
+    	function purchaseFruit(id, qty)
+    	{
+    		if (fruitQuantities[id] < qty)
+    		{
+    			return "Sorry, not enough of that fruit";
+    		}
+    		else
+    		{
+    		fruitQuantities[id] -= qty;
+    			return "";
+    		}
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    <body>
+        <h1>Fruit Stand</h1>
+        
+        <div id="fruits"></div>
+        
+        <div id="form">
+        	
+        	<span class="label">ID</span><input id="fruitID" type="text" value="1" />
+        	<span id="fruitIDError" class="error"></span><br/>
+        	<span class="label">Quantity</span><input id="fruitQuantity" type="text" value="1" />
+        	<span id="fruitQuantityError" class="error"></span><br/>
+        	<div id="errorMessage" class="error"></div>
+        	<input type="button" value="submit" onclick="submitButtonClick()" />
+        	
+        </div>
+        
+        <script type="text/javascript">
+        	initialize();
+        	
+        </script>
+        
+        
+    </body>
+</html>
