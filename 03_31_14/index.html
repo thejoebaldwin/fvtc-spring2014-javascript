@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<style type="text/css">
+			body {
+				text-align:center;
+			}
+			
+			#wrapper {
+				text-align:left;
+				margin-top:50px;
+				margin-left:auto;
+				margin-right:auto;
+				font-size:x-large;
+				width:700px;
+				
+			}
+			
+			#wrapper input
+			{
+				
+			}
+			
+			#output
+			{
+			 color:blue;
+			}
+			
+			
+		</style>
+		<script type="text/javascript">
+			
+			var colors = new Array("red","green","blue");
+			
+			function initialize()
+			{
+				var colorDropDown = document.getElementById('colorDropDown');
+				
+				for (var i = 0; i < colors.length; i++)
+				{
+					var option = document.createElement('option');
+					option.text = colors[i];
+					colorDropDown.add(option);
+				}
+				
+				
+			}
+			
+			function submitButtonClick()
+			{
+				var colorDropDown = document.getElementById('colorDropDown');
+				var selectedIndex = colorDropDown.selectedIndex;
+				//var selectedOption = colorDropDown.options[selectedIndex];
+				//alert(selectedOption.text);
+				//alert( colors[selectedIndex]    );
+				var color = colors[selectedIndex];
+				
+				//write the value of the textbox to the h1 tag
+				var text = document.getElementById("textField").value;
+				var output = document.getElementById("output");
+				output.innerHTML = text;
+				
+				
+				output.style.color = color;
+				//output.style.fontFamily = 'arial';
+			}
+			
+			
+			function textFieldKeyPress(event)
+			{
+				var keyCode = event.keyCode;
+				
+				if (keyCode == 13)
+				{
+					var submitButton = document.getElementById("submitButton");
+					submitButton.click();
+				}
+				
+				//var output = document.getElementById("output");
+				//output.innerHTML = keyCode;
+			}
+			
+			function colorSelectedIndexChanged()
+			{
+				var colorDropDown = document.getElementById('colorDropDown');
+				var selectedIndex = colorDropDown.selectedIndex;
+				var color = colors[selectedIndex];
+				var output = document.getElementById("output");
+				output.style.color = color;
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			Color
+			<select id="colorDropDown" onchange="colorSelectedIndexChanged()"  ></select><br/>
+		
+			Text 
+			<input type="text" id="textField" onkeypress="textFieldKeyPress(event)" /><br/>
+		
+			<input type="button" id="submitButton" value="Submit" onclick="submitButtonClick()" />
+		
+			<h1 id="output"></h1>
+		</div>
+	
+	<script type="text/javascript">
+			
+			//call this here after all the html has been rendered
+			initialize();
+			
+	</script>
+		
+	</body>
+	
+	
+</html>
