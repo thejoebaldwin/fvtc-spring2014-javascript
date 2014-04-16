@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+
+        function setBorder(node) {
+            if (node.style != undefined) {
+                node.style.border = "1px solid black";
+                if (node.childNodes != null) {
+                    for (var i = 0; i < node.childNodes.length; i++) {
+                        setBorder(node.childNodes[i]);
+                    }
+                }
+            }
+        }
+
+        function helpMe(event) {
+            var help = event.target.parentElement.childNodes[3];
+            help.style.display = 'block';
+            help.style.left = event.clientX + 'px';
+            help.style.top = event.clientY + 'px';
+        }
+        function doneHelping(event) {
+            var help = event.target.parentElement.childNodes[3];
+            help.style.display = 'none';
+        }
+
+        function initialize() {
+            var body = document.getElementsByTagName('body')[0];
+            var anchors = document.getElementsByTagName('a');
+            for (var i = 0; i < anchors.length; i++) {
+                anchors[i].onmouseover = helpMe;
+                anchors[i].onmouseout = doneHelping;
+            }
+            //setBorder(body);
+            /*
+            var childNodes = body.childNodes;
+            if (childNodes != null) {
+                for (var i = 0; i < childNodes.length; i++)
+                {
+                    if (childNodes[i].style != undefined) {
+                        childNodes[i].style.border = "1px solid black";
+                        for (var j = 0; j < childNodes[i].childNodes.length; j++) {
+                            if (childNodes[i].childNodes[j].style != undefined) {
+                                childNodes[i].childNodes[j].style.border = "1px solid black";
+                            }
+                        }
+                    }
+                }
+            }
+            */
+        }
+
+    </script>
+    <style>
+        #content {
+            padding:50px;
+            text-align:center;
+        }
+        .help {
+            height:50px;
+            width:50px;
+            position:absolute;
+            background-color:red;
+            display:none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="header">
+            <h1>This is my header</h1>
+        </div>
+        <ul id="myList">
+            <li>
+                <a>One</a>
+                <div class="help">This is some help text</div>
+            </li>
+            <li>
+                <a>Two</a>
+                <div class="help"></div>
+            </li>
+            <li>
+                <a>Three</a>
+                <div class="help"></div>
+            </li>
+        </ul>
+
+        
+
+    </div>
+    <script>
+        initialize();
+    </script>
+</body>
+</html>
