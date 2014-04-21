@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function initialize() {
+
+        }
+
+        function nameKeyPress() {
+            var nameValue = document.getElementById('nameField').value;
+            var nameError = document.getElementById('nameError');
+            if (nameValue != '') {
+                nameError.style.display = 'none';
+            }
+            else {
+                nameError.style.display = 'block';
+            }
+        }
+
+        function emailKeyPress() {
+            var emailValue = document.getElementById('emailField').value;
+            var emailError = document.getElementById('emailError');
+
+            var emailPattern = '[a-z0-9]+(@){1}[a-z0-9]+(.){1}[a-z]+';
+            var re = new RegExp(emailPattern);
+            var m = re.exec(emailValue);
+            //if not null then there was a match (success)
+            if (m != null) {
+                emailError.style.display = 'none';
+            }
+            else {
+                emailError.style.display = 'block';
+            }
+        }
+
+        function phoneKeyPress() {
+            var phoneValue = document.getElementById('phoneField').value;
+            var phoneError = document.getElementById('phoneError');
+            console.log(phoneValue);
+            var phonePattern = /^[0-9]{10}$/;
+            var re = new RegExp(phonePattern);
+            var m = re.exec(phoneValue);
+            console.log(m);
+            if (m != null) {
+                phoneError.style.display = 'none';
+            }
+            else {
+                phoneError.style.display = 'block';
+            }
+        }
+
+    </script>
+    <style>
+        .error {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Name:<input type="text" id="nameField" onkeyup="nameKeyPress()" />
+        <span id="nameError" class="error">*</span>
+    </div>
+    <div>
+        Email:<input type="text" id="emailField" onkeyup="emailKeyPress()" />
+        <span id="emailError" class="error">*</span>
+    </div>
+    <div>
+        Phone:<input type="text" id="phoneField" onkeyup="phoneKeyPress()" />
+        <span id="phoneError" class="error">*</span>
+    </div>
+
+
+    <script>
+        initialize();
+    </script>
+</body>
+</html>
