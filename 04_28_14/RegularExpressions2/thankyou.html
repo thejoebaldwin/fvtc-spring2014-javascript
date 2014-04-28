@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+
+        function initialize() {
+            var message = document.getElementById("message");
+            var display = 'Thank you ' + getNameValue('first') + ' ' + getNameValue('last') + '<br/>';
+            display += ' An email has been sent to ';
+            display += getNameValue("email") + '<br/>';
+            message.innerHTML = display;
+
+        }
+
+        function getNameValue(name) {
+            //get the current url
+            var url = window.location.href;
+            //get the index of the question mark
+            var index = url.indexOf("?");
+            //get the substring of everything after the question
+            url = url.substring(index + 1);
+            //split the querystring into pairs separated by '&'
+            var pairs = url.split("&");
+            //variable to store the value if found
+            var value = '';
+            //loop through each of the pairs
+            for (var i = 0; i < pairs.length; i++) {
+                //split each pair by the equal sign
+                var temp = pairs[i].split("=");
+                //if the first part of the pair equals the name
+                if (temp[0] == name) {
+                    //the second part of the name is the value
+                    value = temp[1];
+                }
+            }
+            value = decodeURIComponent(value);
+            return value;
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="message"></div>
+    <script>
+        initialize();
+    </script>
+</body>
+</html>

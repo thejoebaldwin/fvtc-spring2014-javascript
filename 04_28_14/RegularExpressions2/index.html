@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function validate(event) {
+            //alert("form is valid");
+            var success = true;
+            var message = "";
+            var first = document.getElementById("first").value;
+            var last = document.getElementById("last").value;
+            var email = document.getElementById("email").value;
+
+            message += validateFirstName(first);
+            //message += validateLastName(last);
+            //message += validateEmail(email);
+
+            if (message == '') {
+                //data is all there, submit the form
+                var form = document.getElementById("form");
+                form.submit();
+            }
+            else {
+                alert(message);
+            }
+        }
+
+        function validateFirstName(firstname) {
+            var message = '';
+            //name should be one or more letters
+            //  upper or lower case
+            var namePattern = '[a-zA-Z]+';
+            var re = new RegExp(namePattern);
+            var m = re.exec(firstname);
+            if (m == null) {
+                message = 'please enter a first name';
+            }
+            return message;
+        }
+
+    </script>
+</head>
+<body>
+    <form id="form" action="thankyou.html">
+        <fieldset>
+            <legend>Contact</legend>
+            First Name:<input type="text" name="first" id="first" value="tom" /><br />
+            Last Name: <input type="text" name="last" id="last" value="jones" /><br />
+            Email: <input type="text" name="email" id="email" value="notunusual@gmail.com" /><br />
+        </fieldset>
+        <input type="button" value="submit" onclick="validate(event)" />
+    </form>
+</body>
+</html>

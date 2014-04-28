@@ -1,0 +1,5 @@
+C:\Users\baldwinj\Desktop\RegularExpressions2\RegularExpressions2\bin\RegularExpressions2.dll
+C:\Users\baldwinj\Desktop\RegularExpressions2\RegularExpressions2\bin\RegularExpressions2.pdb
+C:\Users\baldwinj\Desktop\RegularExpressions2\RegularExpressions2\obj\Debug\RegularExpressions2.csprojResolveAssemblyReference.cache
+C:\Users\baldwinj\Desktop\RegularExpressions2\RegularExpressions2\obj\Debug\RegularExpressions2.dll
+C:\Users\baldwinj\Desktop\RegularExpressions2\RegularExpressions2\obj\Debug\RegularExpressions2.pdb
