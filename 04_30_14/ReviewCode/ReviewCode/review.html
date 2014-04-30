@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .error {
+            color:red;
+        }
+        .label {
+            width:100px;
+            display:inline-block;
+            text-align:right;
+            font-weight:bold;
+        }
+    </style>
+    <script>
+        function submitForm() {
+
+            var message = validateFirst();
+            message += validateComments();
+            message += validatePhone();
+
+            if (message == '') {
+                alert("thank you!");
+            }
+            else {
+                alert(message);
+            }
+
+
+
+
+        }
+
+        function validateFirst() {
+            var message = '';
+            var first = document.getElementById("first").value;
+            var error = document.getElementById("errorFirst");
+            if (first == '') {
+                message = "Please enter a first name\n";
+                error.style.display = 'inline-block';
+            }
+            else {
+                error.style.display = 'none';
+            }
+            return message;
+        }
+
+        function validateComments() {
+            var message = '';
+            var comments = document.getElementById("comments").value;
+            var error = document.getElementById("errorComments");
+            if (comments == '') {
+                message = "Please enter comment\n";
+                error.style.display = 'inline-block';
+            }
+            else {
+                error.style.display = 'none';
+            }
+            return message;
+        }
+
+        function validatePhone() {
+            var message = '';
+            var phone = document.getElementById("phone").value;
+            var error = document.getElementById("errorPhone");
+            var phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+            var re = new RegExp(phonePattern);
+            var m = re.exec(phone);
+            if (m == null) {
+                message = "Please enter a valid phone number\n";
+                error.style.display = 'inline-block';
+            }
+            else {
+                error.style.display = 'none';
+            }
+
+            return message;
+        }
+
+
+    </script>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Contact</legend>
+               <span class="label">First</span> <input type="text" id="first" />
+               <span class="error" id="errorFirst">*</span>
+            <br />
+               <span class="label">Last</span>  <input type="text" id="last"  />
+            <br />
+               <span class="label">Phone</span>  <input type="text" id="phone" />
+               <span class="error" id="errorPhone">*</span>
+            <br />
+               <span class="label">Comments</span> <textarea id="comments"></textarea>
+               <span class="error" id="errorComments">*</span>
+            <br />
+               <input type="button" value="Submit" onclick="submitForm()" />
+        </fieldset>
+    </form>
+</body>
+</html>

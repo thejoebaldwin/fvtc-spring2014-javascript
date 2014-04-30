@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function initialize() {
+
+            //w2 = window.open("http://www.google.com");
+            //alert(window.screen.width + 'x' + window.screen.height);
+            var first = document.getElementById("first");
+            first.focus();
+            first.select();
+
+            var header = document.getElementById("header");
+            //change the contents of my header?
+            header.innerHTML = "<h1>Thank You</h1>";
+
+
+            
+
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function Add() {
+            var names = document.getElementById("Names");
+            var option = document.createElement("option");
+            var first = document.getElementById("first").value;
+            var last = document.getElementById("last").value;
+
+            option.text = first + " " + last;
+            //same as above
+            option.setAttribute("text", first + " " + last);
+            names.add(option);
+        }
+
+
+        function createDate() {
+
+            var birthdayA = "12/2/1978";
+            var birthdayB = new Date();
+            var birthdayC = new Date("12/2/1978");
+            var birthdayD = new Date(1978, 11, 2);
+
+        }
+
+        
+        alert(Math.max(7, 13, 99, 102, 23));
+
+
+    </script>
+</head>
+<body>
+    <div id="header">
+        Contact
+    </div>
+  
+    <form>
+        <fieldset>
+            <legend>Contact</legend>
+            First: <input type="text" id="first" value="rick" /><br />
+            Last: <input type="text" id="last" value="james" /><br />
+        </fieldset>
+    </form>
+    <select id="Names">
+
+    </select>
+    <input type="button" onclick="Add()" value="Add" />
+    <input type="button" onclick="goBack()" value="Back" />
+
+
+    <script>
+        initialize();
+    </script>
+</body>
+</html>
